@@ -116,6 +116,7 @@ header p {
   text-align: center;
   box-sizing: border-box;
   overflow: hidden; /* Prevent content overflow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transitions */
 }
 
 .timeline-item img {
@@ -124,6 +125,33 @@ header p {
   margin-bottom: 15px;
   display: block; /* Ensure images are block-level for proper layout */
   object-fit: cover; /* Ensure images fit within their container */
+}
+
+.timeline-item h2,
+.timeline-item h3,
+.timeline-item p {
+  visibility: hidden; /* Hide the text visually */
+  height: 0; /* Remove the height occupied by the text */
+  margin: 0; /* Remove any margin */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.timeline-item:hover h2,
+.timeline-item:hover h3,
+.timeline-item:hover p,
+.timeline-item:focus h2,
+.timeline-item:focus h3,
+.timeline-item:focus p {
+  visibility: visible; /* Make the text visible */
+  height: auto; /* Restore the height */
+  margin: 10px 0; /* Restore margins */
+  overflow: visible; /* Allow content to be visible */
+}
+
+.timeline-item:hover,
+.timeline-item:focus {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
 
 @media (max-width: 768px) {
@@ -136,4 +164,31 @@ header p {
     flex: 1 1 100%; /* Make items take full width */
     max-width: 100%;
   }
+}
+
+section form .btn {
+  margin-bottom: 20px;
+  width: auto; /* Adjust width to fit content */
+  padding: 10px 20px; /* Add padding for a smaller button */
+  display: block; /* Make the button a block element */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 20px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
