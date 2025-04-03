@@ -117,23 +117,35 @@ header p {
   box-sizing: border-box;
   overflow: hidden; /* Prevent content overflow */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transitions */
+  position: relative; /* Enable positioning for child elements */
 }
 
 .timeline-item img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 15px;
+  width: 100%; /* Ensure the image fills the width of the card */
+  height: 200px; /* Set a fixed height for consistency */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  margin-bottom: 0; /* Remove bottom margin to align with text overlay */
   display: block; /* Ensure images are block-level for proper layout */
-  object-fit: cover; /* Ensure images fit within their container */
 }
 
 .timeline-item h2,
 .timeline-item h3,
 .timeline-item p {
+  position: absolute; /* Position text on top of the image */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
+  background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background */
+  color: #fff; /* Set text color to white for contrast */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
   visibility: hidden; /* Hide the text visually */
-  height: 0; /* Remove the height occupied by the text */
+  height: auto; /* Restore the height */
   margin: 0; /* Remove any margin */
   overflow: hidden; /* Prevent overflow */
+  transition: visibility 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  opacity: 0; /* Initially hidden */
 }
 
 .timeline-item:hover h2,
@@ -143,9 +155,7 @@ header p {
 .timeline-item:focus h3,
 .timeline-item:focus p {
   visibility: visible; /* Make the text visible */
-  height: auto; /* Restore the height */
-  margin: 10px 0; /* Restore margins */
-  overflow: visible; /* Allow content to be visible */
+  opacity: 1; /* Make text visible */
 }
 
 .timeline-item:hover,
@@ -175,6 +185,12 @@ section form .btn {
   margin-right: auto; /* Center horizontally */
 }
 
+section .container {
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 8px; /* Optional: Add rounded corners */
+}
+
 footer {
   background-color: #333;
   color: #fff;
@@ -191,4 +207,16 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+body.rtl-mode {
+  direction: rtl;
+}
+
+body.rtl-mode .timeline-wrapper {
+  flex-direction: row-reverse; /* Reverse the timeline direction */
+}
+
+body.rtl-mode footer nav a {
+  margin: 0 10px; /* Ensure consistent spacing for RTL */
 }
