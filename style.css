@@ -1,12 +1,40 @@
+.carousel-wrapper {
+  /* Ensure the wrapper has enough height to display cards */
+  min-height: 300px;
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 .carousel-item {
+  /* Ensure cards have a minimum height */
+  min-height: 250px;
+  flex: 0 0 auto;
+  max-width: 600px;
+  margin: auto;
   text-align: center;
   padding: 20px;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+  background-color: #ffffff; /* Add background for visibility */
+  border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+  border-radius: 8px; /* Optional: Add rounded corners */
 }
 
 .carousel-item img {
   max-width: 100%;
   height: auto;
   margin-bottom: 15px;
+  display: block; /* Ensure images are block-level for proper layout */
 }
 
 .carousel-item h2, .carousel-item h3 {
@@ -16,4 +44,96 @@
 .carousel-item p {
   font-size: 1rem;
   line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item {
+    flex: 0 0 33.33%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel-item {
+    flex: 1 0 auto;
+  }
+}
+
+header {
+  background: linear-gradient(to bottom, #00457c, #0071c5);
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header img {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+header p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.timeline-wrapper {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding does not affect layout */
+}
+
+.timeline-item {
+  flex: 0 0 auto; /* Ensure items do not shrink or grow */
+  scroll-snap-align: center;
+  min-width: 300px;
+  max-width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.timeline-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  display: block; /* Ensure images are block-level for proper layout */
+  object-fit: cover; /* Ensure images fit within their container */
+}
+
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    overflow-x: visible; /* Disable horizontal scrolling */
+  }
+
+  .timeline-item {
+    flex: 1 1 100%; /* Make items take full width */
+    max-width: 100%;
+  }
 }
