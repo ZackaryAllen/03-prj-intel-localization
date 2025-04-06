@@ -210,11 +210,18 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const htmlElement = document.documentElement;
-      if (htmlElement.getAttribute("lang") === "ar" || htmlElement.dir === "rtl") {
-        htmlElement.dir = "rtl"; // Ensure RTL mode is applied
+
+      // Detect the user's language
+      const userLang = navigator.language || navigator.userLanguage;
+
+      // Set the language attribute based on the detected language
+      if (userLang.startsWith("ar")) {
+        htmlElement.lang = "ar";
+        htmlElement.dir = "rtl"; // Apply RTL for Arabic
         document.body.classList.add("rtl-mode");
       } else {
-        htmlElement.dir = "ltr"; // Default to LTR mode
+        htmlElement.lang = "en";
+        htmlElement.dir = "ltr"; // Default to LTR
         document.body.classList.remove("rtl-mode");
       }
     });
